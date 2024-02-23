@@ -98,19 +98,23 @@ headerContainer.addEventListener('mousemove', (event) => {
 });
 
 function autoScroll() {
-    if (isNavItemsScrollingLeft) {
-        navItems.scrollLeft -= SCROLL_SPEED;
-    } else if (isNavItemsScrollingRight) {
-        navItems.scrollLeft += SCROLL_SPEED;
-    }
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-    if (isHeaderContainerScrollingLeft) {
-        headerContainer.scrollLeft -= SCROLL_SPEED;
-    } else if (isHeaderContainerScrollingRight) {
-        headerContainer.scrollLeft += SCROLL_SPEED;
-    }
+    if (windowWidth > 768) {
+        if (isNavItemsScrollingLeft) {
+            navItems.scrollLeft -= SCROLL_SPEED;
+        } else if (isNavItemsScrollingRight) {
+            navItems.scrollLeft += SCROLL_SPEED;
+        }
 
-    requestAnimationFrame(autoScroll);
+        if (isHeaderContainerScrollingLeft) {
+            headerContainer.scrollLeft -= SCROLL_SPEED;
+        } else if (isHeaderContainerScrollingRight) {
+            headerContainer.scrollLeft += SCROLL_SPEED;
+        }
+
+        requestAnimationFrame(autoScroll);
+    }
 }
 
 autoScroll();

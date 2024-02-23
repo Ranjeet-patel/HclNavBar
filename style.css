@@ -124,8 +124,8 @@ a {
     background-color: #ffffff;
     /* border-right: 1px solid black; */
     box-sizing: border-box;
-    flex-shrink: 0;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     position: relative; /* Make the parent relative for absolute positioning */
@@ -176,5 +176,14 @@ a {
     .button{
         padding-right: 10%;
     }
+    
+    .items{
+        width: 50%;
+    }
+    
   }
-
+  @media screen and (max-width: 500px) {
+    .items{
+        width: 100%;
+    }
+  }
