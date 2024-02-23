@@ -67,30 +67,30 @@ navItems.addEventListener('mousemove', (event) => {
 });
 
 headerContainer.addEventListener('mouseenter', () => {
-    if (window.innerWidth > 768){
+    
     headerContainer.style.overflowX = 'auto';
-    }
+    
 });
 
 headerContainer.addEventListener('mouseleave', () => {
-    if (window.innerWidth > 768){
+    
 
         headerContainer.style.overflowX = 'hidden';
         isHeaderContainerScrollingLeft = false;
         isHeaderContainerScrollingRight = false;
-    }
+    
 });
 
 headerContainer.addEventListener('wheel', (event) => {
     event.preventDefault();
-    if (window.innerWidth > 768){
+    
 
         headerContainer.scrollLeft += event.deltaY;
-    }
+    
 });
 
 headerContainer.addEventListener('mousemove', (event) => {
-    if (window.innerWidth > 768){
+    
 
         const mouseX = event.clientX;
         const headerContainerRect = headerContainer.getBoundingClientRect();
@@ -106,7 +106,8 @@ headerContainer.addEventListener('mousemove', (event) => {
             isHeaderContainerScrollingLeft = false;
             isHeaderContainerScrollingRight = false;
         }
-    }
+        
+    
 });
 
 function autoScroll() {
