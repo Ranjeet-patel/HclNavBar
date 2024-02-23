@@ -1,3 +1,4 @@
+var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 const navItems = document.getElementById('navItems');
 const headerContainer = document.querySelector('.headerContainer');
 const SCROLL_SPEED = 2; // Adjust the scrolling speed
@@ -66,39 +67,49 @@ navItems.addEventListener('mousemove', (event) => {
 });
 
 headerContainer.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 768){
     headerContainer.style.overflowX = 'auto';
+    }
 });
 
 headerContainer.addEventListener('mouseleave', () => {
-    headerContainer.style.overflowX = 'hidden';
-    isHeaderContainerScrollingLeft = false;
-    isHeaderContainerScrollingRight = false;
-});
+    if (window.innerWidth > 768){
 
-headerContainer.addEventListener('wheel', (event) => {
-    event.preventDefault();
-    headerContainer.scrollLeft += event.deltaY;
-});
-
-headerContainer.addEventListener('mousemove', (event) => {
-    const mouseX = event.clientX;
-    const headerContainerRect = headerContainer.getBoundingClientRect();
-
-    if (mouseX < headerContainerRect.left + 500) {
-        isHeaderContainerScrollingLeft = true;
-        isHeaderContainerScrollingRight = false;
-    } else if (mouseX > headerContainerRect.right - 500) {
-        isHeaderContainerScrollingRight = true;
-        isHeaderContainerScrollingLeft = false;
-    } else {
-        // Reset scrolling flags when the mouse is not inside the headerContainer
+        headerContainer.style.overflowX = 'hidden';
         isHeaderContainerScrollingLeft = false;
         isHeaderContainerScrollingRight = false;
     }
 });
 
+headerContainer.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    if (window.innerWidth > 768){
+
+        headerContainer.scrollLeft += event.deltaY;
+    }
+});
+
+headerContainer.addEventListener('mousemove', (event) => {
+    if (window.innerWidth > 768){
+
+        const mouseX = event.clientX;
+        const headerContainerRect = headerContainer.getBoundingClientRect();
+    
+        if (mouseX < headerContainerRect.left + 500) {
+            isHeaderContainerScrollingLeft = true;
+            isHeaderContainerScrollingRight = false;
+        } else if (mouseX > headerContainerRect.right - 500) {
+            isHeaderContainerScrollingRight = true;
+            isHeaderContainerScrollingLeft = false;
+        } else {
+            // Reset scrolling flags when the mouse is not inside the headerContainer
+            isHeaderContainerScrollingLeft = false;
+            isHeaderContainerScrollingRight = false;
+        }
+    }
+});
+
 function autoScroll() {
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
     if (windowWidth > 768) {
         if (isNavItemsScrollingLeft) {
