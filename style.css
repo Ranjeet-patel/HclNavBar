@@ -160,4 +160,21 @@ a {
 .navigation{
     position: relative;
 }
+@media screen and (max-width: 768px) {
+    .navItems{
+        display: none;
+    }
+    .corner{
+        display: none;
+    }
+    .container{
+        justify-content: space-between;
+    }
+    .logo{
+        padding-left: 10%;
+    }
+    .button{
+        padding-right: 10%;
+    }
+  }
 
