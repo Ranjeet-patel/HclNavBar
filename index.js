@@ -8,6 +8,9 @@ let isHeaderContainerScrollingLeft = false;
 let isHeaderContainerScrollingRight = false;
 const navButton = document.getElementById('btn');
 
+
+
+
 navButton.addEventListener('click', () => {
 
     
@@ -94,7 +97,7 @@ headerContainer.addEventListener('mousemove', (event) => {
 
         const mouseX = event.clientX;
         const headerContainerRect = headerContainer.getBoundingClientRect();
-    
+        if (windowWidth > 768) {
         if (mouseX < headerContainerRect.left + 500) {
             isHeaderContainerScrollingLeft = true;
             isHeaderContainerScrollingRight = false;
@@ -105,7 +108,7 @@ headerContainer.addEventListener('mousemove', (event) => {
             // Reset scrolling flags when the mouse is not inside the headerContainer
             isHeaderContainerScrollingLeft = false;
             isHeaderContainerScrollingRight = false;
-        }
+        }}
         
     
 });
